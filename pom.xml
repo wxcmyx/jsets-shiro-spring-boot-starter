@@ -1,20 +1,56 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jsets</groupId>
+
+	<groupId>org.sidao</groupId>
 	<artifactId>jsets-shiro-spring-boot-starter</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
+	<packaging>jar</packaging>
+
+	<name>shiro-spring-Boot-starter</name>
+	<description>一个用于集成shiro权限的Spring-starter</description>
+	<url>https://github.com/wxcmyx/jsets-shiro-spring-boot-starter</url>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<tag>HEAD</tag>
+		<url>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</url>
+		<connection>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</connection>
+		<developerConnection>https://github.com/wxcmyx/jsets-shiro-spring-boot-starter</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<name>xiaochao Wang</name>
+			<email>44312782@qq.com</email>
+			<organization>http://sidao.org</organization>
+		</developer>
+	</developers>
 
 	<properties>
-		<spring-boot.version>1.5.3.RELEASE</spring-boot.version>
-		<spring-data-redis.version>1.8.3.RELEASE</spring-data-redis.version>
-		<shiro.version>1.4.0</shiro.version>
-		<jjwt.version>0.9.0</jjwt.version>
-		<jcaptcha.version>1.0-all</jcaptcha.version>
-		<guava.version>20.0</guava.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+
+		<spring-boot.version>2.0.3.RELEASE</spring-boot.version>
+		<spring-data-redis.version>2.0.6.RELEASE</spring-data-redis.version>
+		<shiro.version>1.4.0</shiro.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<jcaptcha.version>1.0</jcaptcha.version>
+		<guava.version>24.1-jre</guava.version>
 	</properties>
+
 
 	<dependencies>
 		<dependency>
