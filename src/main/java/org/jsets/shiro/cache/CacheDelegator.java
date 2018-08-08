@@ -22,7 +22,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.util.Commons;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,7 +44,7 @@ public class CacheDelegator {
 	 * @param account
 	 */
 	public int incPasswdRetryCount(String account){
-		Cache<String,Integer> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_PASSWORD_RETRY);
+		Cache<String,Integer> cache = this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_PASSWORD_RETRY);
 		synchronized (cacheMonitor) {
 			Integer count = cache.get(account);
 			if (null == count) {
@@ -59,7 +59,7 @@ public class CacheDelegator {
 	 * @param account
 	 */
 	public void cleanPasswdRetryCount(String account){
-		Cache<String,AtomicInteger> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_PASSWORD_RETRY);
+		Cache<String,AtomicInteger> cache = this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_PASSWORD_RETRY);
 		cache.remove(account);
 	}
 	
@@ -69,7 +69,7 @@ public class CacheDelegator {
 	 * @return
 	 */
 	public String getKeepUser(String account){
-		Cache<String,String> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_KEEP_ONE_USER);
+		Cache<String,String> cache = this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_KEEP_ONE_USER);
 		return cache.get(account);
 	}
 	
@@ -80,7 +80,7 @@ public class CacheDelegator {
 	 * @return
 	 */
 	public String putKeepUser(String account,String sessionId){
-		Cache<String,String> cache =  this.cacheManager.getCache(ShiroProperties.CACHE_NAME_KEEP_ONE_USER);
+		Cache<String,String> cache =  this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_KEEP_ONE_USER);
 		return cache.put(account, sessionId);
 	}
 	
@@ -91,8 +91,8 @@ public class CacheDelegator {
 	 */
 	public void clearAuthCache(String account,String realmName){
 		synchronized (cacheMonitor) {
-			Cache<String, AuthenticationInfo> authenticationCache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_AUTHENTICATION);
-			Cache<Object,AuthorizationInfo> authorizationCache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_AUTHORIZATION);
+			Cache<String, AuthenticationInfo> authenticationCache = this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_AUTHENTICATION);
+			Cache<Object,AuthorizationInfo> authorizationCache = this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_AUTHORIZATION);
 			authenticationCache.remove(account);
 			authorizationCache.remove(new SimplePrincipalCollection(account,realmName));
 		}
@@ -107,13 +107,13 @@ public class CacheDelegator {
 		if(Commons.CACHE_TYPE_MAP == this.cacheType){
 			return false;
 		}
-		Cache<String,Integer> cache =  this.cacheManager.getCache(ShiroProperties.CACHE_NAME_TOKEN_BURNERS);
+		Cache<String,Integer> cache =  this.cacheManager.getCache(BaseShiroProperties.CACHE_NAME_TOKEN_BURNERS);
 		Integer burned = cache.get(token);
 		if(null == burned){
 			cache.put(token, Integer.valueOf(0));
 			if(Commons.CACHE_TYPE_REDIS == this.cacheType){
 				RedisCacheManager redisCacheManager = (RedisCacheManager)cacheManager;
-				redisCacheManager.setRedisTimeout(ShiroProperties.CACHE_NAME_TOKEN_BURNERS,86400l);
+				redisCacheManager.setRedisTimeout(BaseShiroProperties.CACHE_NAME_TOKEN_BURNERS,86400l);
 			}
 			return false;
 		}

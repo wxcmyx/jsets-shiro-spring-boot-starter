@@ -36,7 +36,7 @@ import org.springframework.context.annotation.Import;
  * date 2016年6月31日
  */
 @Configuration
-@EnableConfigurationProperties(ShiroProperties.class)
+@EnableConfigurationProperties(BaseShiroProperties.class)
 @Import(DefaultShiroConfiguration.class)
 @AutoConfigureAfter(AbstractCachingConfiguration.class)
 public class JsetsShiroAutoConfiguration {
@@ -44,7 +44,7 @@ public class JsetsShiroAutoConfiguration {
 	@Autowired
 	private BeanFactory beanFactory;
 	@Autowired
-	private ShiroProperties properties;
+	private BaseShiroProperties properties;
 
 	@Bean
 	public BeanPostProcessor lifecycleBeanPostProcessor() {

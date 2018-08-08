@@ -29,7 +29,7 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.jsets.shiro.cache.CacheDelegator;
 import org.jsets.shiro.config.IllegalConfigException;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.filter.stateless.HmacAuthcFilter;
 import org.jsets.shiro.filter.stateless.HmacPermsFilter;
 import org.jsets.shiro.filter.stateless.HmacRolesFilter;
@@ -55,7 +55,7 @@ public class FilterManager {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(FilterManager.class);
 	
-	private ShiroProperties properties;
+	private BaseShiroProperties properties;
 	private DefaultWebSessionManager sessionManager;
 	private CacheDelegator cacheDelegator;
 	private MessageConfig messages;
@@ -134,7 +134,7 @@ public class FilterManager {
 	
 	public void initFilterChain(){
 		// ------------anon
-		ShiroProperties.DEFAULT_IGNORED.forEach(ignored 
+		BaseShiroProperties.DEFAULT_IGNORED.forEach(ignored
 								-> this.anonFilterChain.put(ignored, Commons.FILTER_ANON));
 		if(Commons.hasLen(this.properties.getKickoutUrl()))
 			this.anonFilterChain.put(properties.getKickoutUrl(), Commons.FILTER_ANON);
@@ -239,7 +239,7 @@ public class FilterManager {
 	}
 
 
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 	public void setSessionManager(DefaultWebSessionManager sessionManager) {

@@ -19,11 +19,10 @@ package org.jsets.shiro.service;
 
 import javax.xml.bind.DatatypeConverter;
 import org.apache.shiro.crypto.hash.SimpleHash;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.model.StatelessLogined;
 import org.jsets.shiro.util.CryptoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.google.common.base.Strings;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
@@ -38,7 +37,7 @@ import io.jsonwebtoken.Jwts;
 public class ShiroCryptoService {
 	
 	@Autowired
-	private ShiroProperties shiroProperties;
+	private BaseShiroProperties shiroProperties;
 	
 	/**
 	 * 生成密码

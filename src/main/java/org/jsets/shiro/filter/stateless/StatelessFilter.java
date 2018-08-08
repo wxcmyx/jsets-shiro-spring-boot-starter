@@ -17,23 +17,24 @@
  */
 package org.jsets.shiro.filter.stateless;
 
-import java.util.Enumeration;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.token.HmacToken;
 import org.jsets.shiro.token.JwtToken;
 import org.jsets.shiro.util.Commons;
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 无状态过滤器--抽象父类
@@ -45,9 +46,9 @@ public abstract class StatelessFilter extends AccessControlFilter{
 
 	protected boolean isHmacSubmission(ServletRequest request) {
 
-		String appId = request.getParameter(ShiroProperties.PARAM_HMAC_APP_ID);
-		String timestamp = request.getParameter(ShiroProperties.PARAM_HMAC_TIMESTAMP);
-		String digest= request.getParameter(ShiroProperties.PARAM_HMAC_DIGEST);
+		String appId = request.getParameter(BaseShiroProperties.PARAM_HMAC_APP_ID);
+		String timestamp = request.getParameter(BaseShiroProperties.PARAM_HMAC_TIMESTAMP);
+		String digest= request.getParameter(BaseShiroProperties.PARAM_HMAC_DIGEST);
 		return (request instanceof HttpServletRequest)
 							&& !Strings.isNullOrEmpty(appId)
 							&& !Strings.isNullOrEmpty(timestamp)
@@ -56,9 +57,9 @@ public abstract class StatelessFilter extends AccessControlFilter{
 	
 	protected AuthenticationToken createHmacToken(ServletRequest request, ServletResponse response) {
 		
-		String appId = request.getParameter(ShiroProperties.PARAM_HMAC_APP_ID);
-		String timestamp = request.getParameter(ShiroProperties.PARAM_HMAC_TIMESTAMP);
-		String digest= request.getParameter(ShiroProperties.PARAM_HMAC_DIGEST);
+		String appId = request.getParameter(BaseShiroProperties.PARAM_HMAC_APP_ID);
+		String timestamp = request.getParameter(BaseShiroProperties.PARAM_HMAC_TIMESTAMP);
+		String digest= request.getParameter(BaseShiroProperties.PARAM_HMAC_DIGEST);
 		List<String> parameterNames = Lists.newLinkedList();
 		Enumeration<String> namesEnumeration = request.getParameterNames();
 		while(namesEnumeration.hasMoreElements()){
@@ -69,10 +70,12 @@ public abstract class StatelessFilter extends AccessControlFilter{
 		parameterNames.stream()
 			.sorted()
 			.forEach(name -> {
-				if(!ShiroProperties.PARAM_HMAC_APP_ID.equals(name)
-					&&!ShiroProperties.PARAM_HMAC_TIMESTAMP.equals(name)
-					&&!ShiroProperties.PARAM_HMAC_DIGEST.equals(name))
+				if(!BaseShiroProperties.PARAM_HMAC_APP_ID.equals(name)
+					&&!BaseShiroProperties.PARAM_HMAC_TIMESTAMP.equals(name)
+					&&!BaseShiroProperties.PARAM_HMAC_DIGEST.equals(name))
+				{
 					baseString.append(request.getParameter(name));
+				}
 		});
 		baseString.append(appId);
 		baseString.append(timestamp);
@@ -81,13 +84,13 @@ public abstract class StatelessFilter extends AccessControlFilter{
 	}
 	
 	protected boolean isJwtSubmission(ServletRequest request) {
-		String jwt = request.getParameter(ShiroProperties.PARAM_JWT);
+		String jwt = request.getParameter(BaseShiroProperties.PARAM_JWT);
 		return (request instanceof HttpServletRequest) && !Strings.isNullOrEmpty(jwt);
 	}
 	
 	protected AuthenticationToken createJwtToken(ServletRequest request, ServletResponse response) {
 		String host = request.getRemoteHost();
-		String jwt = request.getParameter(ShiroProperties.PARAM_JWT);
+		String jwt = request.getParameter(BaseShiroProperties.PARAM_JWT);
 		return new JwtToken(host,jwt);
 	}
 	

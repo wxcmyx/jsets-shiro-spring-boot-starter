@@ -17,21 +17,22 @@
  */
 package org.jsets.shiro.filter;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
+import com.google.common.base.Strings;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
-import org.jsets.shiro.util.JCaptchaUtil;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.util.Commons;
+import org.jsets.shiro.util.JCaptchaUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.common.base.Strings;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登陆过滤，器扩展自FormAuthenticationFilter：增加了针对ajax请求的处理、jcaptcha验证码
@@ -43,7 +44,7 @@ public class JsetsFormAuthenticationFilter extends FormAuthenticationFilter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsetsFormAuthenticationFilter.class);
 	
-	private  ShiroProperties properties;
+	private BaseShiroProperties properties;
 	private  MessageConfig messages;
 
 
@@ -65,12 +66,13 @@ public class JsetsFormAuthenticationFilter extends FormAuthenticationFilter {
     	return super.isAccessAllowed(request,response,mappedValue);
     }
 	
-    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+    @Override
+	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
     	if (isLoginRequest(request, response)) {
             if (isLoginSubmission(request, response)) {//是否登陆请求
                 // 是否启用验证码
                 if(this.properties.isJcaptchaEnable()){
-                	String jcaptcha = WebUtils.getCleanParam(request, ShiroProperties.PARAM_JCAPTCHA);
+                	String jcaptcha = WebUtils.getCleanParam(request, BaseShiroProperties.PARAM_JCAPTCHA);
                 	if(Strings.isNullOrEmpty(jcaptcha)){
                 		return onJcaptchaFailure(request, response,this.messages.getMsgCaptchaEmpty());
                 	}
@@ -121,7 +123,7 @@ public class JsetsFormAuthenticationFilter extends FormAuthenticationFilter {
 		return true;
 	}
 
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 	public void setMessages(MessageConfig messages) {

@@ -30,7 +30,7 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.jsets.shiro.authc.StatelessLocals;
 import org.jsets.shiro.cache.CacheDelegator;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.filter.FilterManager;
 import org.jsets.shiro.model.Account;
 import org.jsets.shiro.model.StatelessLogined;
@@ -53,7 +53,7 @@ public class ShiroUtils {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ShiroUtils.class);
 	
-	private static ShiroProperties shiroProperties;
+	private static BaseShiroProperties shiroProperties;
 	private static ShiroCryptoService cryptoService;
 	private static DefaultWebSessionManager sessionManager;
 	private static CacheDelegator shiroCacheDelegator;
@@ -109,7 +109,7 @@ public class ShiroUtils {
 	public static Account getUser() {
 		Session currentSession = SecurityUtils.getSubject().getSession(false);
 		if(null != currentSession){
-			return (Account) currentSession.getAttribute(ShiroProperties.ATTRIBUTE_SESSION_CURRENT_USER);
+			return (Account) currentSession.getAttribute(BaseShiroProperties.ATTRIBUTE_SESSION_CURRENT_USER);
 		} else{
 			return StatelessLocals.getAccount();
 		}
@@ -167,7 +167,7 @@ public class ShiroUtils {
 	 * @param message
 	 */
 	public static void setAuthMessage(HttpServletRequest request, String message) { 
-		 request.setAttribute(ShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE, message); 
+		 request.setAttribute(BaseShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE, message);
 	}
 	/**
 	 * 获取活跃的SESSION数量
@@ -192,7 +192,7 @@ public class ShiroUtils {
 		try {
 			Session session = sessionManager.getSession(new DefaultSessionKey(sessionId));
 			if (session != null) {
-				session.setAttribute(ShiroProperties.ATTRIBUTE_SESSION_FORCE_LOGOUT, Boolean.TRUE);
+				session.setAttribute(BaseShiroProperties.ATTRIBUTE_SESSION_FORCE_LOGOUT, Boolean.TRUE);
 			}
 			return Boolean.TRUE;
 		} catch (UnknownSessionException e) { 
@@ -228,7 +228,7 @@ public class ShiroUtils {
 	}
 
 	
-	public static ShiroProperties getShiroProperties() {
+	public static BaseShiroProperties getShiroProperties() {
 		return shiroProperties;
 	}
 	public static ShiroCryptoService getCryptoService() {
@@ -250,7 +250,7 @@ public class ShiroUtils {
 		return filterManager;
 	}
 	
-	public static void setShiroProperties(ShiroProperties shiroProperties) {
+	public static void setShiroProperties(BaseShiroProperties shiroProperties) {
 		ShiroUtils.shiroProperties = shiroProperties;
 	}
 	public static void setCryptoService(ShiroCryptoService cryptoService) {

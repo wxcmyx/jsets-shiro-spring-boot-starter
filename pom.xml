@@ -54,6 +54,8 @@
 		<jjwt.version>0.9.1</jjwt.version>
 		<jcaptcha.version>1.0</jcaptcha.version>
 		<guava.version>24.1-jre</guava.version>
+		<javax.servlet-api>3.1.0</javax.servlet-api>
+
 	</properties>
 
 
@@ -61,13 +63,19 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api}</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring-boot.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
 			<version>${spring-boot.version}</version>
 			<optional>true</optional>
 		</dependency>
@@ -105,7 +113,7 @@
 		<dependency>
 			<groupId>com.octo.captcha</groupId>
 			<artifactId>jcaptcha</artifactId>
-			<version>1.0</version>
+			<version>${jcaptcha.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.jhlabs</groupId>

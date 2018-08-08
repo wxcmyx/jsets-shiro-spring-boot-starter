@@ -23,7 +23,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.jsets.shiro.cache.CacheDelegator;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.handler.PasswdRetryLimitHandler;
 import org.jsets.shiro.service.ShiroCryptoService;
 
@@ -35,7 +35,7 @@ import org.jsets.shiro.service.ShiroCryptoService;
  */
 public class JsetsPasswdMatcher implements CredentialsMatcher {
 
-	private  ShiroProperties properties;
+	private BaseShiroProperties properties;
 	private  MessageConfig messages;
 	private  PasswdRetryLimitHandler passwdRetryLimitHandler;
 	private  CacheDelegator cacheDelegator;
@@ -66,7 +66,7 @@ public class JsetsPasswdMatcher implements CredentialsMatcher {
 		return true;
 	}
 
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 	public void setCacheDelegator(CacheDelegator cacheDelegator) {

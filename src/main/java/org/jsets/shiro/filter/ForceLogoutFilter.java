@@ -17,13 +17,14 @@
  */
 package org.jsets.shiro.filter;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 /**
  * 强制用户下线过滤器
@@ -36,27 +37,28 @@ public class ForceLogoutFilter extends JsetsAccessControlFilter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ForceLogoutFilter.class);
 
-	private ShiroProperties properties;
+	private BaseShiroProperties properties;
 	
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
 		return false;
 	}
 
+	@Override
 	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
 		Subject subject = getSubject(request, response);
 		if (!subject.isAuthenticated() && !subject.isRemembered()) {
 			return this.respondLogin(request, response);
 		}
 		Session currentSession = subject.getSession();
-        if (null!=currentSession.getAttribute(ShiroProperties.ATTRIBUTE_SESSION_FORCE_LOGOUT)) {
+        if (null!=currentSession.getAttribute(BaseShiroProperties.ATTRIBUTE_SESSION_FORCE_LOGOUT)) {
         	subject.logout();
 			return this.respondRedirect(request, response,this.properties.getForceLogoutUrl());
         }
         return true;
 	}
 
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 }

@@ -65,7 +65,7 @@ public class JsetsShiroManager {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsetsShiroManager.class);
 
 	private final BeanFactory beanFactory;
-	private final ShiroProperties properties;
+	private final BaseShiroProperties properties;
 	private final SecurityManagerConfig managerConfig;
 	private final FilterChainConfig filterConfig;
 	private DefaultWebSessionManager sessionManager;
@@ -81,7 +81,7 @@ public class JsetsShiroManager {
 	private short cacheType = Commons.CACHE_TYPE_MAP;
 	private final AtomicBoolean initialized = new AtomicBoolean(Boolean.FALSE);
 
-	protected JsetsShiroManager(BeanFactory beanFactory,ShiroProperties properties, 
+	protected JsetsShiroManager(BeanFactory beanFactory,BaseShiroProperties properties,
 						SecurityManagerConfig managerConfig,FilterChainConfig filterConfig) {
 		this.beanFactory = beanFactory;
 		this.properties = properties;
@@ -292,7 +292,7 @@ public class JsetsShiroManager {
 	}
 
 
-	public ShiroProperties getProperties() {
+	public BaseShiroProperties getProperties() {
 		return properties;
 	}
 	public CacheManager getCacheManager() {

@@ -17,16 +17,17 @@
  */
 package org.jsets.shiro.filter;
 
-import java.io.IOException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.web.filter.authz.AuthorizationFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.jsets.shiro.config.MessageConfig;
 import org.jsets.shiro.util.Commons;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 /**
  * 抽象权限过滤器,扩展自AuthorizationFilter增加了针对ajax请求的处理。
  * 
@@ -35,6 +36,7 @@ import org.jsets.shiro.util.Commons;
  */
 public abstract class JsetsAuthorizationFilter extends AuthorizationFilter{
 
+    @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws IOException {
         Subject subject = getSubject(request, response);
         //未认证

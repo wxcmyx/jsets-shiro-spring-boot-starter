@@ -23,7 +23,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.jsets.shiro.cache.CacheDelegator;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.model.StatelessLogined;
 import org.jsets.shiro.service.ShiroCryptoService;
 import org.jsets.shiro.service.ShiroStatelessAccountProvider;
@@ -42,7 +42,7 @@ import io.jsonwebtoken.SignatureException;
  */
 public class JsetsJwtMatcher implements CredentialsMatcher {
 	
-	private  ShiroProperties properties;
+	private BaseShiroProperties properties;
 	private  MessageConfig messages;
 	private  ShiroCryptoService cryptoService;
 	private  ShiroStatelessAccountProvider accountProvider;
@@ -81,7 +81,7 @@ public class JsetsJwtMatcher implements CredentialsMatcher {
         return true;
 	}
 
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 	public void setCryptoService(ShiroCryptoService cryptoService) {

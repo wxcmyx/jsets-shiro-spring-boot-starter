@@ -31,7 +31,7 @@ import io.jsonwebtoken.impl.DefaultJwsHeader;
 import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.impl.compression.DefaultCompressionCodecResolver;
 import io.jsonwebtoken.lang.Assert;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.token.StatelessToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,7 +160,7 @@ public abstract class Commons {
 	 * @param message
 	 */
 	public static void setAuthMessage(ServletRequest request, String message) { 
-		request.setAttribute(ShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE,message);
+		request.setAttribute(BaseShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE,message);
 	}
 
 	/**

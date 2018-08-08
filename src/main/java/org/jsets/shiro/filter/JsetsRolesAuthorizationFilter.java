@@ -17,14 +17,13 @@
  */
 package org.jsets.shiro.filter;
 
-import java.io.IOException;
-import java.util.List;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.CollectionUtils;
 
-import com.google.common.collect.Lists;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * 重写RolesAuthorizationFilter，使其继承自JsetsAuthorizationFilter;
@@ -35,6 +34,7 @@ import com.google.common.collect.Lists;
  */
 public class JsetsRolesAuthorizationFilter extends JsetsAuthorizationFilter{
 
+    @Override
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws IOException {
     	Subject subject = getSubject(request, response);
         String[] rolesArray = (String[]) mappedValue;
@@ -44,7 +44,9 @@ public class JsetsRolesAuthorizationFilter extends JsetsAuthorizationFilter{
         List<String> roles = CollectionUtils.asList(rolesArray);
         boolean[] hasRoles = subject.hasRoles(roles);
         for(boolean hasRole:hasRoles){
-        	if(hasRole) return true;
+        	if(hasRole) {
+        	    return true;
+            }
         }
         return false;
     }

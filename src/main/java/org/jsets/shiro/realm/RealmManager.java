@@ -26,7 +26,7 @@ import org.jsets.shiro.authc.JsetsJwtMatcher;
 import org.jsets.shiro.authc.JsetsPasswdMatcher;
 import org.jsets.shiro.cache.CacheDelegator;
 import org.jsets.shiro.config.MessageConfig;
-import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.config.BaseShiroProperties;
 import org.jsets.shiro.service.DefaultStatelessAccountProvider;
 import org.jsets.shiro.service.ShiroAccountProvider;
 import org.jsets.shiro.service.ShiroCryptoService;
@@ -40,7 +40,7 @@ import com.google.common.collect.Lists;
  */
 public class RealmManager {
 	
-	private ShiroProperties properties;
+	private BaseShiroProperties properties;
 	private MessageConfig messages;
 	private JsetsPasswdMatcher jsetsPasswdMatcher;
 	private ShiroCryptoService shiroCryptoService;
@@ -65,8 +65,8 @@ public class RealmManager {
 		passwdRealm.setAccountProvider(this.accountProvider);
 		passwdRealm.setMessages(this.messages);
 		if (this.properties.isAuthCacheEnabled()) {
-			passwdRealm.setAuthorizationCacheName(ShiroProperties.CACHE_NAME_AUTHORIZATION);
-			passwdRealm.setAuthenticationCacheName(ShiroProperties.CACHE_NAME_AUTHENTICATION);
+			passwdRealm.setAuthorizationCacheName(BaseShiroProperties.CACHE_NAME_AUTHORIZATION);
+			passwdRealm.setAuthenticationCacheName(BaseShiroProperties.CACHE_NAME_AUTHENTICATION);
 			passwdRealm.setCachingEnabled(Boolean.TRUE);
 			passwdRealm.setAuthenticationCachingEnabled(Boolean.TRUE);
 			passwdRealm.setAuthorizationCachingEnabled(Boolean.TRUE);
@@ -107,10 +107,10 @@ public class RealmManager {
 					authorizingRealm.setCredentialsMatcher(jsetsPasswdMatcher);
 				}
 				if(authorizingRealm.isAuthenticationCachingEnabled() && this.properties.isAuthCacheEnabled()){
-					authorizingRealm.setAuthenticationCacheName(ShiroProperties.CACHE_NAME_AUTHENTICATION);
+					authorizingRealm.setAuthenticationCacheName(BaseShiroProperties.CACHE_NAME_AUTHENTICATION);
 				}
 				if(authorizingRealm.isAuthorizationCachingEnabled() && this.properties.isAuthCacheEnabled()){
-					authorizingRealm.setAuthorizationCacheName(ShiroProperties.CACHE_NAME_AUTHORIZATION);
+					authorizingRealm.setAuthorizationCacheName(BaseShiroProperties.CACHE_NAME_AUTHORIZATION);
 				}
 				this.cachedRealms.add(authorizingRealm);
 				this.statefulRealms.add(authorizingRealm);
@@ -147,7 +147,7 @@ public class RealmManager {
 	public List<Realm> getCachedRealms() {
 		return cachedRealms;
 	}
-	public void setProperties(ShiroProperties properties) {
+	public void setProperties(BaseShiroProperties properties) {
 		this.properties = properties;
 	}
 	public void setJsetsPasswdMatcher(JsetsPasswdMatcher jsetsPasswdMatcher) {

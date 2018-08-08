@@ -17,10 +17,11 @@
  */
 package org.jsets.shiro.filter;
 
-import java.io.IOException;
+import org.apache.shiro.subject.Subject;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import org.apache.shiro.subject.Subject;
+import java.io.IOException;
 /**
  * 重写PermissionsAuthorizationFilter，使其继承自JsetsAuthorizationFilter
  * 
@@ -29,6 +30,7 @@ import org.apache.shiro.subject.Subject;
  */
 public class JsetsPermissionsAuthorizationFilter extends JsetsAuthorizationFilter{
 	
+    @Override
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws IOException {
         Subject subject = getSubject(request, response);
         String[] perms = (String[]) mappedValue;
