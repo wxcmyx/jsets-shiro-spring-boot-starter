@@ -3,7 +3,7 @@
 
 	<groupId>org.sidao</groupId>
 	<artifactId>jsets-shiro-spring-boot-starter</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>shiro-spring-Boot-starter</name>
@@ -29,7 +29,7 @@
 	</licenses>
 
 	<scm>
-		<tag>1.0.4-SNAPSHOT</tag>
+		<tag>HEAD</tag>
 		<url>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</url>
 		<connection>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</connection>
 		<developerConnection>https://github.com/wxcmyx/jsets-shiro-spring-boot-starter</developerConnection>
