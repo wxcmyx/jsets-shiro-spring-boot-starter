@@ -17,16 +17,17 @@
  */
 package org.jsets.shiro.util;
 
-import java.util.Date;
-import java.util.UUID;
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.crypto.Mac;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.util.Date;
+import java.util.UUID;
 /**
  * 安全加密相关工具类
  * 
@@ -44,7 +45,7 @@ public abstract class CryptoUtil {
 	/**
 	 * JWT签发令牌
 	 * 
-	 * @param id 令牌ID
+	 * @param jwtSecretKey
 	 * @param subject 用户ID
 	 * @param issuer 签发人
 	 * @param period 有效时间(毫秒)
@@ -75,9 +76,13 @@ public abstract class CryptoUtil {
 			jwt.setExpiration(expiration);
 		}
 		// 访问主张-角色
-		if(null!=roles&&!"".equals(roles)) jwt.claim("roles", roles);
+		if(null!=roles&&!"".equals(roles)){
+			jwt.claim("roles", roles);
+		}
 		// 访问主张-权限
-		if(null!=permissions&&!"".equals(permissions)) jwt.claim("perms", permissions);
+		if(null!=permissions&&!"".equals(permissions)){
+			jwt.claim("perms", permissions);
+		}
 		jwt.compressWith(CompressionCodecs.DEFLATE);
 		jwt.signWith(algorithm, secretKeyBytes);
 		return jwt.compact();
@@ -117,7 +122,9 @@ public abstract class CryptoUtil {
 	    for (int n = 0; bytes!=null && n < bytes.length; n++) {
 	        stmp = Integer.toHexString(bytes[n] & 0XFF);
 	        if (stmp.length() == 1)
-	            hs.append('0');
+			{
+				hs.append('0');
+			}
 	        hs.append(stmp);
 	    }
 	    return hs.toString().toUpperCase();

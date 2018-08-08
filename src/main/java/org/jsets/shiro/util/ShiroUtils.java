@@ -17,9 +17,8 @@
  */
 package org.jsets.shiro.util;
 
-import java.util.Collections;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+import com.google.common.collect.Lists;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.realm.Realm;
@@ -39,8 +38,10 @@ import org.jsets.shiro.realm.RealmManager;
 import org.jsets.shiro.service.ShiroCryptoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.common.collect.Lists;
-import io.jsonwebtoken.SignatureAlgorithm;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
+import java.util.List;
 /**
  * SHIRO工具
  * 
@@ -64,6 +65,7 @@ public class ShiroUtils {
 	/**
 	 * 生成密码
 	 * @param plaintext 明文
+	 * @return
 	 */
 	public static String password(String plaintext) {
 		return cryptoService.password(plaintext);
@@ -85,6 +87,7 @@ public class ShiroUtils {
 	 * 验签JWT
 	 * 
 	 * @param jwt json web token
+	 * @return
 	 */
 	public static StatelessLogined parseJwt(String jwt) {
 		return cryptoService.parseJwt(jwt);
@@ -94,12 +97,14 @@ public class ShiroUtils {
 	 * 
 	 * @param plaintext 明文
 	 * @param appKey 秘钥
+	 * @return
 	 */
 	public static String hmacDigest(String plaintext,String appKey) {
 		return cryptoService.hmacDigest(plaintext,appKey);
 	}
 	/**
 	 * 获取当前登陆的用户
+	 * @return
 	 */
 	public static Account getUser() {
 		Session currentSession = SecurityUtils.getSubject().getSession(false);
@@ -112,6 +117,7 @@ public class ShiroUtils {
 	/**
 	 * 当前用户是否拥有角色
 	 * @param roleName 角色名称
+	 * @return
 	 */
 	public static boolean hasRole(String roleName) {
 		return SecurityUtils.getSubject().hasRole(roleName);
@@ -119,6 +125,7 @@ public class ShiroUtils {
 	/**
 	 * 当前用户是否拥有权限
 	 * @param permName 权限名称
+	 * @return
 	 */
 	public static boolean hasPerms(String permName) {
 		try{
@@ -132,6 +139,7 @@ public class ShiroUtils {
 	
 	/**
 	 * 当前用户切换成switchUserId的身份
+	 * @param switchUserId
 	 */
 	public static void runAs(String switchUserId) {
 		SecurityUtils.getSubject().runAs(new SimplePrincipalCollection(switchUserId, "")); 
@@ -139,6 +147,7 @@ public class ShiroUtils {
 	
 	/**
 	 * 当前用户是否以切换的身份运行
+	 * @return
 	 */
 	public static boolean isRunAs() {
 		return SecurityUtils.getSubject().isRunAs(); 
@@ -154,18 +163,22 @@ public class ShiroUtils {
 	}
 	/**
 	 * 设置认证信息
+	 * @param request
+	 * @param message
 	 */
 	public static void setAuthMessage(HttpServletRequest request, String message) { 
 		 request.setAttribute(ShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE, message); 
 	}
 	/**
 	 * 获取活跃的SESSION数量
+	 * @return
 	 */
 	public static int getActiveSessionCount() {
 		return sessionManager.getSessionDAO().getActiveSessions().size();
 	}
 	/**
 	 * 获取活跃的SESSION
+	 * @return
 	 */
 	public static List<Session> getActiveSessions() {
 		return Collections.unmodifiableList(Lists.newArrayList(sessionManager.getSessionDAO().getActiveSessions()));
@@ -173,6 +186,7 @@ public class ShiroUtils {
 	/**
 	 * 强制退出
 	 * @param sessionId 退出的sessionId
+	 * @return
 	 */
 	public static boolean forceLogout(String sessionId) {
 		try {
@@ -188,6 +202,7 @@ public class ShiroUtils {
 	}
 	/**
 	 * 获取当前Ssssion
+	 * @return
 	 */
 	public static Session getSession() {
 		return SecurityUtils.getSubject().getSession();
@@ -196,6 +211,7 @@ public class ShiroUtils {
 	 * 删除account的认证、授权缓存
 	 * <br>如果启用了auth缓存，当用户的认证信息和角色信息发生了改变，一定要执行此操作。
 	 * <br>否则只能等到用户再次登录这些变更才能生效。
+	 * @param account
 	 */
 	public static void clearAuthCache(String account) {
 		for(Realm cachedRealm:realmManager.getCachedRealms()){

@@ -17,9 +17,10 @@
  */
 package org.jsets.shiro.service;
 
-import java.util.Set;
 import org.apache.shiro.authc.AuthenticationException;
 import org.jsets.shiro.model.Account;
+
+import java.util.Set;
 /**
  * 账号信息提供者接口<br>
  * 应用系统实现这个接口为鉴权提供必要的账号信息。
@@ -30,20 +31,21 @@ import org.jsets.shiro.model.Account;
 public interface ShiroAccountProvider {
 	/**
 	 * 根据用户名获取账号信息
+	 * @param account
 	 * @return 账号信如果查找不到用户返回null或者直接抛出AuthenticationException
-	 * @param userId息
-	 * @see org.jsets.weblite.core.security.Account
+	 * @see org.jsets.shiro.model.Account
+	 * @throws AuthenticationException
 	 */
 	public Account loadAccount(String account) throws AuthenticationException;
 	/**
 	 * 根据用户名称加载用户所有的角色
-	 * @param userId 账号
+	 * @param account
 	 * @return 角色列表
 	 */
 	public Set<String> loadRoles(String account);
 	/**
 	 * 根据用户名称加载用户所有的权限
-	 * @param userId 账号
+	 * @param account
 	 * @return 权限列表
 	 */
 	public Set<String> loadPermissions(String account);

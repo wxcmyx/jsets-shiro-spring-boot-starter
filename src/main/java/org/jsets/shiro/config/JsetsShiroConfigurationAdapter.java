@@ -17,11 +17,12 @@
  */
 package org.jsets.shiro.config;
 
-import javax.annotation.PostConstruct;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
+
+import javax.annotation.PostConstruct;
 /**
  * Shiro应用端定制适配器，用户可以继承此类以设置自己的配置
  * 
@@ -49,6 +50,7 @@ public abstract class JsetsShiroConfigurationAdapter {
 	 *	<br>securityManager.setPasswdRetryLimitHandler(passwdRetryLimitHandler) 设置密码连续错误超限处理器
 	 *  <br>其他方法@see org.jsets.shiro.config.SecurityManagerConfig
 	 *  <br>
+	 * @param securityManager
 	 */
 	protected abstract void configure(SecurityManagerConfig securityManager);
 	/**
@@ -57,6 +59,7 @@ public abstract class JsetsShiroConfigurationAdapter {
 	 * 	<br>filterChainConfig.setShiroFilteRulesProvider(shiroFilteRulesProvider) 设置动态过滤规则提供者
 	 *  <br>其他方法@see org.jsets.shiro.config.FilterChainConfig
 	 *  <br>
+	 * @param filterChain
 	 */
 	protected abstract void configure(FilterChainConfig filterChain);
 	

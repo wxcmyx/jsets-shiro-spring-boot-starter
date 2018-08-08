@@ -17,7 +17,6 @@
  */
 package org.jsets.shiro.cache;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.cache.Cache;
@@ -25,6 +24,8 @@ import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.jsets.shiro.config.ShiroProperties;
 import org.jsets.shiro.util.Commons;
+
+import java.util.concurrent.atomic.AtomicInteger;
 /**
  * cache功能委托类
  * 
@@ -39,6 +40,8 @@ public class CacheDelegator {
 
 	/**
 	 * 获取并增加密码重试次数
+	 * @return
+	 * @param account
 	 */
 	public int incPasswdRetryCount(String account){
 		Cache<String,Integer> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_PASSWORD_RETRY);
@@ -53,6 +56,7 @@ public class CacheDelegator {
 	}
 	/**
 	 * 清扫密码重试次数
+	 * @param account
 	 */
 	public void cleanPasswdRetryCount(String account){
 		Cache<String,AtomicInteger> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_PASSWORD_RETRY);
@@ -61,6 +65,8 @@ public class CacheDelegator {
 	
 	/**
 	 * 获取保持登陆状态的用户
+	 * @param account
+	 * @return
 	 */
 	public String getKeepUser(String account){
 		Cache<String,String> cache = this.cacheManager.getCache(ShiroProperties.CACHE_NAME_KEEP_ONE_USER);
@@ -69,6 +75,9 @@ public class CacheDelegator {
 	
 	/**
 	 * 缓存保持登陆状态的用户
+	 * @param account
+	 * @param sessionId
+	 * @return
 	 */
 	public String putKeepUser(String account,String sessionId){
 		Cache<String,String> cache =  this.cacheManager.getCache(ShiroProperties.CACHE_NAME_KEEP_ONE_USER);
@@ -77,6 +86,8 @@ public class CacheDelegator {
 	
 	/**
 	 * 清扫账号对应的认证、授权缓存
+	 * @param account
+	 * @param realmName
 	 */
 	public void clearAuthCache(String account,String realmName){
 		synchronized (cacheMonitor) {
@@ -89,9 +100,13 @@ public class CacheDelegator {
 
 	/**
 	 * 是否销毁的token
+	 * @param token
+	 * @return
 	 */
 	public boolean cutBurnedToken(String token){
-		if(Commons.CACHE_TYPE_MAP == this.cacheType) return false;
+		if(Commons.CACHE_TYPE_MAP == this.cacheType){
+			return false;
+		}
 		Cache<String,Integer> cache =  this.cacheManager.getCache(ShiroProperties.CACHE_NAME_TOKEN_BURNERS);
 		Integer burned = cache.get(token);
 		if(null == burned){

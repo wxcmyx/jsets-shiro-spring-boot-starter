@@ -18,10 +18,11 @@
 package org.jsets.shiro.config;
 
 
-import java.util.Map;
-import javax.servlet.Filter;
-import org.jsets.shiro.service.ShiroFilteRulesProvider;
 import com.google.common.collect.Maps;
+import org.jsets.shiro.service.ShiroFilteRulesProvider;
+
+import javax.servlet.Filter;
+import java.util.Map;
 
 /**
  * shiro 过滤器链配置
@@ -61,6 +62,8 @@ public class FilterChainConfig{
 	 * <br>jwtRoles:jwt令牌角色验证过滤器
 	 * <br>jwtPerms:jwt令牌权限验证过滤器
 	 * <br>如果无法满足需求，可设置此项覆盖或者添加过滤器
+	 * @param name
+	 * @param filter
 	 */
 	public void addFilter(String name,Filter filter) {
 		this.filters.put(name, filter);

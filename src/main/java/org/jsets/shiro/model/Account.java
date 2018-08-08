@@ -28,10 +28,12 @@ import java.io.Serializable;
 public interface Account extends Serializable{
 	/**
 	 * 获取用户名
+	 * @return
 	 */
 	public String getAccount();
 	/**
 	 * 获取登陆口令
+	 * @return
 	 */
 	public String getPassword();
 }

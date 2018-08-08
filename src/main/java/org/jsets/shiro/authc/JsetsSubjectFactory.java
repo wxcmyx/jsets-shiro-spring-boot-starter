@@ -35,13 +35,15 @@ public class JsetsSubjectFactory extends DefaultWebSubjectFactory {
 	private final DefaultSessionStorageEvaluator storageEvaluator;
 	
 	/**
-	 * DefaultSessionStorageEvaluator是否持久化SESSION的开关 
+	 * DefaultSessionStorageEvaluator是否持久化SESSION的开关
+	 * @param storageEvaluator
 	 */
 	public JsetsSubjectFactory(DefaultSessionStorageEvaluator storageEvaluator){
 		this.storageEvaluator = storageEvaluator;
 	}
 	
-    public Subject createSubject(SubjectContext context) { 
+    @Override
+	public Subject createSubject(SubjectContext context) {
     	this.storageEvaluator.setSessionStorageEnabled(Boolean.TRUE);
     	AuthenticationToken token = context.getAuthenticationToken();
     	if(Commons.isStatelessToken(token)){

@@ -17,7 +17,7 @@
  */
 package org.jsets.shiro.config;
 
-import java.util.List;
+import com.google.common.collect.Lists;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.session.SessionListener;
@@ -26,7 +26,8 @@ import org.apache.shiro.web.servlet.SimpleCookie;
 import org.jsets.shiro.handler.PasswdRetryLimitHandler;
 import org.jsets.shiro.service.ShiroAccountProvider;
 import org.jsets.shiro.service.ShiroStatelessAccountProvider;
-import com.google.common.collect.Lists;
+
+import java.util.List;
 /**
  * shiro 组件配置
  * 
@@ -104,13 +105,14 @@ public class SecurityManagerConfig {
 	 * <br>HmacRealm:无状态hmac签名鉴权控制域
 	 * <br>JwtRealm:无状态jwt令牌鉴权控制域
 	 * <br>如果无法满足需求，可设置此项添加鉴权控制域
-	 * @param cacheManager  see org.apache.shiro.cache.CacheManager
+	 * @param realm
 	 */
 	public void addRealm(Realm realm) {
 		this.realms.add(realm);
 	}
 	/**
 	 * 获取提示消息配置，以便根据需要修改提示消息
+	 * @return
 	 */
 	public MessageConfig getMessages() {
 		return messages;

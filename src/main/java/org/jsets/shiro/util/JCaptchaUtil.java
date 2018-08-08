@@ -17,10 +17,6 @@
  */
 package org.jsets.shiro.util;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.image.BufferedImage;
-import javax.servlet.http.HttpServletRequest;
 import com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator;
 import com.octo.captcha.component.image.color.RandomListColorGenerator;
 import com.octo.captcha.component.image.fontgenerator.RandomFontGenerator;
@@ -33,6 +29,10 @@ import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 import com.octo.captcha.service.image.ImageCaptchaService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * 验证码工具
@@ -56,6 +56,8 @@ public class JCaptchaUtil {
 	
 	/**
 	 * 生成验证码
+	 * @param request
+	 * @return
 	 */
 	public static BufferedImage generateCaptcha(HttpServletRequest request) {
 		return jcaptchaService().getImageChallengeForID(request.getSession(true).getId());
@@ -63,6 +65,9 @@ public class JCaptchaUtil {
 
 	/**
 	 * 验证码校验
+	 * @param request
+	 * @param jcaptcha
+	 * @return
 	 */
 	public static boolean validateCaptcha(HttpServletRequest request,String jcaptcha) {
 		try {

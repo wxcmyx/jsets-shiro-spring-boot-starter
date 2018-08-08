@@ -116,36 +116,42 @@ public class MessageConfig {
 	
 	/**
 	 * 设置提示信息-验证码为空
+	 * @param msgCaptchaEmpty
 	 */
 	public void setMsgCaptchaEmpty(String msgCaptchaEmpty) {
 		this.msgCaptchaEmpty = msgCaptchaEmpty;
 	}
 	/**
 	 * 设置提示信息-验证码错误
+	 * @param msgCaptchaError
 	 */
 	public void setMsgCaptchaError(String msgCaptchaError) {
 		this.msgCaptchaError = msgCaptchaError;
 	}
 	/**
 	 * 设置提示信息-账号或者密码为空
+	 * @param msgAccountPasswordEmpty
 	 */
 	public void setMsgAccountPasswordEmpty(String msgAccountPasswordEmpty) {
 		this.msgAccountPasswordEmpty = msgAccountPasswordEmpty;
 	}
 	/**
 	 * 设置提示信息-账号不存在
+	 * @param msgAccountNotExist
 	 */
 	public void setMsgAccountNotExist(String msgAccountNotExist) {
 		this.msgAccountNotExist = msgAccountNotExist;
 	}
 	/**
 	 * 设置提示信息-账号异常
+	 * @param msgAccountException
 	 */
 	public void setMsgAccountException(String msgAccountException) {
 		this.msgAccountException = msgAccountException;
 	}
 	/**
 	 * 设置提示信息-账号或密码错误
+	 * @param msgAccountPasswordError
 	 */
 	public void setMsgAccountPasswordError(String msgAccountPasswordError) {
 		this.msgAccountPasswordError = msgAccountPasswordError;
@@ -153,42 +159,49 @@ public class MessageConfig {
 	/**
 	 * 设置提示信息-密码重试错误，提供两个站位符：最大次数{total}、剩余次数：{remain}
 	 * <br>默认：密码错误{total}次账号将被锁定,您还可以重试：{remain}次
+	 * @param msgPasswordRetryError
 	 */
 	public void setMsgPasswordRetryError(String msgPasswordRetryError) {
 		this.msgPasswordRetryError = msgPasswordRetryError;
 	}
 	/**
 	 * 设置提示信息-hmac签名无效
+	 * @param msgHmacError
 	 */
 	public void setMsgHmacError(String msgHmacError) {
 		this.msgHmacError = msgHmacError;
 	}
 	/**
 	 * 设置提示信息-hmac签名超时
+	 * @param msgHmacTimeout
 	 */
 	public void setMsgHmacTimeout(String msgHmacTimeout) {
 		this.msgHmacTimeout = msgHmacTimeout;
 	}
 	/**
 	 * 设置提示信息-jwt无效
+	 * @param msgJwtError
 	 */
 	public void setMsgJwtError(String msgJwtError) {
 		this.msgJwtError = msgJwtError;
 	}
 	/**
 	 * 设置提示信息-jwt超时
+	 * @param msgJwtTimeout
 	 */
 	public void setMsgJwtTimeout(String msgJwtTimeout) {
 		this.msgJwtTimeout = msgJwtTimeout;
 	}
 	/**
 	 * 设置提示信息-jwt格式错误
+	 * @param msgJwtMalformed
 	 */
 	public void setMsgJwtMalformed(String msgJwtMalformed) {
 		this.msgJwtMalformed = msgJwtMalformed;
 	}
 	/**
 	 * 设置提示信息-jwt签名错误
+	 * @param msgJwtSignature
 	 */
 	public void setMsgJwtSignature(String msgJwtSignature) {
 		this.msgJwtSignature = msgJwtSignature;

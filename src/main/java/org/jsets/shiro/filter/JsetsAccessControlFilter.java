@@ -17,14 +17,15 @@
  */
 package org.jsets.shiro.filter;
 
-import java.io.IOException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.jsets.shiro.config.MessageConfig;
 import org.jsets.shiro.util.Commons;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 /**
  * 抽象认证过滤器,扩展自AccessControlFilter增加了针对ajax请求的处理。
  * 
@@ -36,6 +37,10 @@ public abstract class JsetsAccessControlFilter extends AccessControlFilter{
 
 	/**
 	 * 定位到登陆界面，返回false过滤器链停止
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
 	 */
 	protected boolean respondLogin(ServletRequest request, ServletResponse response) throws IOException{
 		if (Commons.isAjax(WebUtils.toHttp(request))) {
@@ -51,6 +56,11 @@ public abstract class JsetsAccessControlFilter extends AccessControlFilter{
 	
 	/**
 	 * 定位到指定界面，返回false过滤器链停止
+	 * @param request
+	 * @param response
+	 * @param redirectUrl
+	 * @return
+	 * @throws IOException
 	 */
 	protected boolean respondRedirect(ServletRequest request, ServletResponse response,String redirectUrl) throws IOException{
 		WebUtils.issueRedirect(request, response, redirectUrl);

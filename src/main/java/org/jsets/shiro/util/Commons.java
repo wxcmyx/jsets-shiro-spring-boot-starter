@@ -17,17 +17,6 @@
  */
 package org.jsets.shiro.util;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Map;
-import java.util.Set;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.jsets.shiro.config.ShiroProperties;
-import org.jsets.shiro.token.StatelessToken;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
@@ -42,6 +31,18 @@ import io.jsonwebtoken.impl.DefaultJwsHeader;
 import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.impl.compression.DefaultCompressionCodecResolver;
 import io.jsonwebtoken.lang.Assert;
+import org.jsets.shiro.config.ShiroProperties;
+import org.jsets.shiro.token.StatelessToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 辅助工具类
@@ -84,6 +85,8 @@ public abstract class Commons {
 	
 	/**
 	 * 判断是否AJAX请求
+	 * @param request
+	 * @return
 	 */
 	public static boolean isAjax(HttpServletRequest request) {
 		return "XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"));
@@ -91,6 +94,9 @@ public abstract class Commons {
 
 	/**
 	 * REST失败响应
+	 * @param response
+	 * @param code
+	 * @param message
 	 */
 	public static void restFailed(HttpServletResponse response,String code,String message) {
 		respondJson(response,HttpServletResponse.SC_BAD_REQUEST,code,message);
@@ -98,6 +104,9 @@ public abstract class Commons {
 	
 	/**
 	 * AJAX成功响应
+	 * @param response
+	 * @param code
+	 * @param message
 	 */
 	public static void ajaxSucceed(HttpServletResponse response,String code,String message) {
 		respondJson(response,HttpServletResponse.SC_OK,code,message);
@@ -105,6 +114,10 @@ public abstract class Commons {
 	
 	/**
 	 * AJAX失败响应
+	 * @param response
+	 * @param respondStatus
+	 * @param code
+	 * @param message
 	 */
 	public static void ajaxFailed(HttpServletResponse response
 													,int respondStatus,String code,String message) {
@@ -113,6 +126,10 @@ public abstract class Commons {
 	 
 	/**
 	 * JSON响应
+	 * @param response
+	 * @param respondStatus
+	 * @param code
+	 * @param message
 	 */
 	private static void respondJson(HttpServletResponse response
 											, int respondStatus, String code,String message) {
@@ -130,13 +147,17 @@ public abstract class Commons {
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage(), e);
 		} finally {
-			if (out != null)
+			if (out != null){
 				out.close();
+			}
+
 		}
 	}
 
 	/**
 	 * 设置信息
+	 * @param request
+	 * @param message
 	 */
 	public static void setAuthMessage(ServletRequest request, String message) { 
 		request.setAttribute(ShiroProperties.ATTRIBUTE_REQUEST_AUTH_MESSAGE,message);
@@ -144,6 +165,8 @@ public abstract class Commons {
 
 	/**
 	 * 分割字符串进SET
+	 * @param str
+	 * @return
 	 */
 	public static Set<String> split(String str) {
 		return split(str, ",");
@@ -151,12 +174,16 @@ public abstract class Commons {
 
 	/**
 	 * 分割字符串进SET
+	 * @param str
+	 * @param separator
+	 * @return
 	 */
 	public static Set<String> split(String str, String separator) {
 		
 		Set<String> set = Sets.newLinkedHashSet();
-		if (Strings.isNullOrEmpty(str))
+		if (Strings.isNullOrEmpty(str)){
 			return set;
+		}
 		for (String s : str.split(separator)) {
 			set.add(s);
 		}
@@ -165,11 +192,15 @@ public abstract class Commons {
 	
 	/**
 	 * 分割字符串进SET
+	 * @param str
+	 * @param separator
+	 * @return
 	 */
 	public static Set<String> checkTimestamp(String str, String separator) {
 		Set<String> set = Sets.newLinkedHashSet();
-		if (Strings.isNullOrEmpty(str))
+		if (Strings.isNullOrEmpty(str)){
 			return set;
+		}
 		for (String s : str.split(separator)) {
 			set.add(s);
 		}
@@ -178,6 +209,8 @@ public abstract class Commons {
 	
 	/**
 	 * 是否无状态令牌
+	 * @param token
+	 * @return
 	 */
 	public static boolean isStatelessToken(Object token){
 		return token instanceof StatelessToken;
@@ -185,6 +218,8 @@ public abstract class Commons {
 	
 	/**
 	 * 对象转JSON
+	 * @param object
+	 * @return
 	 */
 	public static String toJson(Object object){
 		try {
@@ -197,6 +232,9 @@ public abstract class Commons {
 
 	/**
 	 * JSON转对象
+	 * @param json
+	 * @param valueType
+	 * @return
 	 */
 	public static <T> T fromJson(String json,Class<T> valueType){
 		try {
@@ -209,6 +247,8 @@ public abstract class Commons {
 	
 	/**
 	 * JSON转对象
+	 * @param string
+	 * @return
 	 */
 	public static boolean hasLen(String string){
 		return !Strings.isNullOrEmpty(string);
@@ -216,6 +256,8 @@ public abstract class Commons {
 	
 	/**
 	 * 解析JWT的Payload
+	 * @param jwt
+	 * @return
 	 */
 	public static String parseJwtPayload(String jwt){
         Assert.hasText(jwt, "JWT String argument cannot be null or empty.");
