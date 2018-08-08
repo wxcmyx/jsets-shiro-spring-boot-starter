@@ -29,7 +29,7 @@ import org.jsets.shiro.util.Commons;
  * 抽象认证过滤器,扩展自AccessControlFilter增加了针对ajax请求的处理。
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public abstract class JsetsAccessControlFilter extends AccessControlFilter{

@@ -21,7 +21,7 @@ package org.jsets.shiro.token;
  * HMAC(哈希消息认证码)令牌
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class HmacToken extends StatelessToken{
 	

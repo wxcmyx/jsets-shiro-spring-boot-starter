@@ -31,7 +31,7 @@ import com.google.common.collect.Lists;
  * <br>修改了匹配逻辑，只要当前用户有一个角色满足URL所需角色就放行
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JsetsRolesAuthorizationFilter extends JsetsAuthorizationFilter{
 

@@ -25,7 +25,7 @@ import org.jsets.shiro.model.RolePermRule;
  * 动态过滤规则提供者接口
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public interface ShiroFilteRulesProvider  {
 	/**

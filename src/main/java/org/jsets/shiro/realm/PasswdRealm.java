@@ -34,7 +34,7 @@ import org.jsets.shiro.service.ShiroAccountProvider;
  * 基于用户、名密码的控制域
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class PasswdRealm extends AuthorizingRealm {
 	

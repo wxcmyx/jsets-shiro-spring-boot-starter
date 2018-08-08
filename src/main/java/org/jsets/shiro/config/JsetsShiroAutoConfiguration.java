@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Import;
  * shiro自动配置
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 @Configuration
 @EnableConfigurationProperties(ShiroProperties.class)

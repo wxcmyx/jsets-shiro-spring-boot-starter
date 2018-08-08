@@ -32,7 +32,7 @@ import org.jsets.shiro.service.ShiroAccountProvider;
  * 认证过滤，器扩展自UserFilter：增加了针对ajax请求的处理
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JsetsUserFilter extends JsetsAccessControlFilter {
 

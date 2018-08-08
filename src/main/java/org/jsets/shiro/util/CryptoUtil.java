@@ -31,7 +31,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * 安全加密相关工具类
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public abstract class CryptoUtil {
 	

@@ -28,7 +28,7 @@ import com.google.common.collect.Sets;
  * 默认的账号服务
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class DefaultAccountProvider implements ShiroAccountProvider {
 

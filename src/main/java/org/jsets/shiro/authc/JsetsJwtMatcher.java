@@ -38,7 +38,7 @@ import io.jsonwebtoken.SignatureException;
  * JWT匹配器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ *
  */
 public class JsetsJwtMatcher implements CredentialsMatcher {
 	

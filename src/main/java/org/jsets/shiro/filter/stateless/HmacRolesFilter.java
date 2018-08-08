@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * 基于HMAC（ 散列消息认证码）的无状态认证过滤器--角色验证过滤器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class HmacRolesFilter extends StatelessFilter{
 	

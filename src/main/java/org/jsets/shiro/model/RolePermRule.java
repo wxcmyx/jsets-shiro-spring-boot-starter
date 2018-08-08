@@ -23,7 +23,7 @@ import com.google.common.base.Strings;
  * 基于角色/权限的权限验证规则
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class RolePermRule extends AuthorizeRule  {

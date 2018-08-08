@@ -33,7 +33,7 @@ import org.jsets.shiro.util.JCaptchaUtil;
  * 验证码生成过滤器
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class JcaptchaFilter extends OncePerRequestFilter {  

@@ -20,7 +20,7 @@ package org.jsets.shiro.handler;
  * 密码连续错误次数超限处理器接口
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public interface PasswdRetryLimitHandler {
 

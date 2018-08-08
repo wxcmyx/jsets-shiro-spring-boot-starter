@@ -31,7 +31,7 @@ import com.google.common.collect.Lists;
  * shiro 组件配置
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class SecurityManagerConfig {
 

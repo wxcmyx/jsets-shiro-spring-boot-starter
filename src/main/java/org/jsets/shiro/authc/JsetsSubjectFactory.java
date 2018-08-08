@@ -28,7 +28,7 @@ import org.jsets.shiro.util.Commons;
  * 扩展自DefaultWebSubjectFactory,对于无状态的TOKEN不创建session
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JsetsSubjectFactory extends DefaultWebSubjectFactory { 
 	

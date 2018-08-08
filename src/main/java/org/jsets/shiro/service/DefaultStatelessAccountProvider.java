@@ -25,7 +25,7 @@ import org.jsets.shiro.model.Account;
  * 默认无状态账号提供者实现
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class DefaultStatelessAccountProvider implements ShiroStatelessAccountProvider{

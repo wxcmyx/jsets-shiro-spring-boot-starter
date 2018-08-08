@@ -23,7 +23,7 @@ import java.io.Serializable;
  * 
  * 权限验证规则
  * @author wangjie 
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public abstract class AuthorizeRule implements Serializable{

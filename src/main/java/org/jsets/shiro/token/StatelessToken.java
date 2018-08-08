@@ -23,7 +23,7 @@ import org.apache.shiro.authc.AuthenticationToken;
  * 无状态令牌抽象
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public abstract class StatelessToken implements AuthenticationToken{
 

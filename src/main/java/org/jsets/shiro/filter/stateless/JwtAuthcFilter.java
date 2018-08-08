@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
  * 基于JWT(JSON WEB TOKEN)的无状态过滤器--认证
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JwtAuthcFilter extends StatelessFilter{
 	

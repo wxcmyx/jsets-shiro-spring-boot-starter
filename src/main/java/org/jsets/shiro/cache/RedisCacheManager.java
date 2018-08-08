@@ -33,7 +33,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  * 基于REDIS的缓存管理器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 @SuppressWarnings("all")
 public class RedisCacheManager implements CacheManager{
@@ -63,7 +63,7 @@ public class RedisCacheManager implements CacheManager{
 	 * 基于REDIS的缓存
 	 *
 	 * @author wangjie (https://github.com/wj596)
-	 * @date 2016年6月31日
+	 * date 2016年6月31日
 	 */
 	public static class RedisCache<K,V> implements Cache<K,V>{
 

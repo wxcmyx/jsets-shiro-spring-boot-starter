@@ -21,7 +21,7 @@ package org.jsets.shiro.config;
  * 配置异常
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class IllegalConfigException extends RuntimeException{

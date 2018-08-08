@@ -37,7 +37,7 @@ import com.google.common.base.Strings;
  * 登陆过滤，器扩展自FormAuthenticationFilter：增加了针对ajax请求的处理、jcaptcha验证码
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JsetsFormAuthenticationFilter extends FormAuthenticationFilter {
 

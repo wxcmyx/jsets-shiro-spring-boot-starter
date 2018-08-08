@@ -29,7 +29,7 @@ import org.apache.shiro.cache.CacheManager;
  * 基于MAP的缓存管理器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 @SuppressWarnings("all")
 public class MapCacheManager implements CacheManager{
@@ -51,7 +51,7 @@ public class MapCacheManager implements CacheManager{
 	 * 基于MAP的缓存
 	 * 
 	 * @author wangjie (https://github.com/wj596)
-	 * @date 2016年6月31日
+	 * date 2016年6月31日
 	 */
 	public static class MapCache<K,V> implements Cache<K,V>{
 

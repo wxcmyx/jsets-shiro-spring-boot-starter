@@ -23,7 +23,7 @@ import org.apache.shiro.authc.AuthenticationException;
  * 安全信息服务，应用系统必须实现这个接口，为安全认证提供必要的信息。
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */ 
 public interface ShiroStatelessAccountProvider {
 	/**

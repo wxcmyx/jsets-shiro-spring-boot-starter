@@ -25,7 +25,7 @@ import org.jsets.shiro.model.Account;
  * 应用系统实现这个接口为鉴权提供必要的账号信息。
  * 
  * @author wangjie (https://github.com/wj596) 
- * @date 2016年6月24日 下午2:55:15
+ * date 2016年6月24日 下午2:55:15
  */ 
 public interface ShiroAccountProvider {
 	/**

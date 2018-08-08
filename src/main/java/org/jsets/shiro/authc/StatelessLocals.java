@@ -24,7 +24,7 @@ import org.jsets.shiro.model.Account;
  * <br>由于无SESSION,账号信息缓存于此供应用使用
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public abstract class StatelessLocals {
 

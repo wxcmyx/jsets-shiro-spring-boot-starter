@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Configuration;
  * 默认配置
  *
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 @Configuration
 @ConditionalOnMissingBean(JsetsShiroConfigurationAdapter.class)

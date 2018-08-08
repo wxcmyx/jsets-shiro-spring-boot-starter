@@ -23,7 +23,7 @@ import java.io.Serializable;
  * 账号的抽象，应用中的用户实体要实现这个接口
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */ 
 public interface Account extends Serializable{
 	/**

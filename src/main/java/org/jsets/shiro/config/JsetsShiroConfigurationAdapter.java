@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Bean;
  * Shiro应用端定制适配器，用户可以继承此类以设置自己的配置
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 @AutoConfigureAfter(JsetsShiroAutoConfiguration.class)

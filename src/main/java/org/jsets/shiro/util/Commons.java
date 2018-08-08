@@ -47,7 +47,7 @@ import io.jsonwebtoken.lang.Assert;
  * 辅助工具类
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public abstract class Commons {

@@ -34,7 +34,7 @@ import com.google.common.base.Strings;
  * 保持账号唯一用户登陆
  * 
  * author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  * 
  */
 public class KeepOneUserFilter extends JsetsAccessControlFilter {

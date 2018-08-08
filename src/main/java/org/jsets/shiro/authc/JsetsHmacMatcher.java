@@ -17,7 +17,7 @@
  */
 package org.jsets.shiro.authc;
 
-import java.util.Date;
+import com.google.common.base.Strings;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -31,13 +31,13 @@ import org.jsets.shiro.service.ShiroStatelessAccountProvider;
 import org.jsets.shiro.token.HmacToken;
 import org.jsets.shiro.util.Commons;
 
-import com.google.common.base.Strings;
+import java.util.Date;
 
 /**
  * HMAC签名匹配器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ *
  */
 public class JsetsHmacMatcher implements CredentialsMatcher {
 

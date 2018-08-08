@@ -20,7 +20,7 @@ package org.jsets.shiro.token;
  * JWT(json web token)令牌
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JwtToken extends StatelessToken{
 

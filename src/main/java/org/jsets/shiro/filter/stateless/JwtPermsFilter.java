@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * 基于JWT标准的无状态过滤器--资源验证过滤器
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  * 
  */
 public class JwtPermsFilter extends StatelessFilter {

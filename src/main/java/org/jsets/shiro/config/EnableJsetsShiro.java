@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Import;
  * jsets-shiro自动配置注解
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 @Target(ElementType.TYPE)

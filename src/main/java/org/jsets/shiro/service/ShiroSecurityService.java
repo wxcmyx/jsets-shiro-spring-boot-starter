@@ -30,7 +30,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * 安全功能聚合服务类
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  * 
  */ 
 

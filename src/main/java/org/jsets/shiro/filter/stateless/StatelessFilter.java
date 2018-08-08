@@ -39,7 +39,7 @@ import com.google.common.collect.Lists;
  * 无状态过滤器--抽象父类
  * 
  * @author wangjie (http://www.jianshu.com/u/ffa3cba4c604) 
- * @date 2016年6月24日 下午2:55:15
+ * date 2016年6月24日 下午2:55:15
  */
 public abstract class StatelessFilter extends AccessControlFilter{
 

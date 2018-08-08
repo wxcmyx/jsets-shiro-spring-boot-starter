@@ -58,7 +58,7 @@ import com.google.common.collect.Lists;
  * SHIRO构造器
  *
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JsetsShiroManager {
 	

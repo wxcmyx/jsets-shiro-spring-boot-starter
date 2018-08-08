@@ -35,7 +35,7 @@ import io.jsonwebtoken.MalformedJwtException;
  * 基于JWT（ JSON WEB TOKEN）的控制域
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class JwtRealm extends AuthorizingRealm{
 

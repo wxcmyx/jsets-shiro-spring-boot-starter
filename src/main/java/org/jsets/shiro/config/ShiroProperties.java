@@ -26,7 +26,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * shiro配置属性
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 @ConfigurationProperties(prefix = "jsets.shiro")
 public class ShiroProperties {

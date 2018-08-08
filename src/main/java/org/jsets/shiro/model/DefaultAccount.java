@@ -20,7 +20,7 @@ package org.jsets.shiro.model;
  * 默认账号实现
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class DefaultAccount implements Account{

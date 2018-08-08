@@ -32,7 +32,7 @@ import io.jsonwebtoken.Jwts;
  * 签名\摘要服务
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 public class ShiroCryptoService {

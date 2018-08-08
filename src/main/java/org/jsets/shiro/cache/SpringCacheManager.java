@@ -31,7 +31,7 @@ import org.springframework.cache.Cache.ValueWrapper;
  * spring CacheManager包装
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  *
  */
 @SuppressWarnings("all")
@@ -69,7 +69,7 @@ public class SpringCacheManager implements CacheManager{
 	 * spring Cache包装
 	 * 
 	 * @author wangjie (https://github.com/wj596)
-	 * @date 2016年6月31日
+	 * date 2016年6月31日
 	 *
 	 */
 	public static class SpringCache<K,V> implements Cache<K,V>{

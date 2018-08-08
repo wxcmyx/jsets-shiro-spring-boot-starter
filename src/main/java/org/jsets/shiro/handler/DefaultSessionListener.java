@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
  * 默认SESSION监听
  * 
  * @author wangjie (https://github.com/wj596)
- * @date 2016年6月31日
+ * date 2016年6月31日
  */
 public class DefaultSessionListener implements SessionListener {
 
