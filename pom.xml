@@ -29,7 +29,7 @@
 	</licenses>
 
 	<scm>
-		<tag>1.0.3-SNAPSHOT</tag>
+		<tag>HEAD</tag>
 		<url>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</url>
 		<connection>scm:git:git@github.com/wxcmyx/jsets-shiro-spring-boot-starter.git</connection>
 		<developerConnection>https://github.com/wxcmyx/jsets-shiro-spring-boot-starter</developerConnection>
