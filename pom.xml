@@ -3,7 +3,7 @@
 
 	<groupId>org.sidao</groupId>
 	<artifactId>jsets-shiro-spring-boot-starter</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>shiro-spring-Boot-starter</name>
